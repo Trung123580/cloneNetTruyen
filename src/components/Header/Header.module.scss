@@ -1,0 +1,61 @@
+@import '../Global/GlobalStyle/variable';
+@include container;
+.header {
+  background: url(../../assets/image/header_banner.png) top center repeat-x;
+  height: 50px;
+  display: flex;
+  position: relative;
+  @include mobile {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+  }
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    @include mobile {
+      justify-content: flex-start;
+    }
+    .bar-menu {
+      position: absolute;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      @include table {
+        display: none;
+      }
+      @include pc {
+        display: none;
+      }
+      .icon-bar {
+        background-color: #d0b32e;
+        padding: 4px 4px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        border-radius: 3px;
+        position: relative;
+        height: 28px;
+        width: 28px;
+        span {
+          display: inline-block;
+          width: 20px;
+          height: 4px;
+          background-color: #fff;
+          transition: 0.5s;
+        }
+      }
+    }
+  }
+  &-logo {
+    //
+    > img {
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
+}

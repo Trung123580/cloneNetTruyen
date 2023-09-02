@@ -1,0 +1,50 @@
+$color-white: #fff;
+$color-black: #333;
+$color-purple: #ae4ad9;
+$bg-color: #ebebeb;
+@mixin rotate {
+  transform: rotate(180deg);
+  transition: 0.7s;
+  scale: 1.2;
+}
+@mixin transition {
+  transition: 0.3s;
+}
+//Mobile
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+//Table
+@mixin table {
+  @media (min-width: 769px) and (max-width: 992px) {
+    .container {
+      width: 100%;
+    }
+    @content;
+  }
+}
+@mixin pc {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin container {
+  .container {
+    width: 1030px;
+    margin: 0 auto;
+    padding: 0 15px;
+    @content;
+  }
+  @include mobile {
+    .container {
+      width: 100%;
+    }
+  }
+  @include table {
+    .container {
+      width: 100%;
+    }
+  }
+}

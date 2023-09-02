@@ -1,0 +1,11 @@
+import Home from './Home';
+import Hot from './Hot';
+import Search from './Search';
+import History from './History';
+import Follow from './Follow';
+import Category from './Category';
+import Logins from './Logins';
+import Register from './Register';
+import Men from './Men';
+import Women from './Women';
+export { Home, Hot, Search, History, Follow, Logins, Register, Category, Men, Women };

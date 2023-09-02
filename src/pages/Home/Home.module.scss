@@ -1,0 +1,8 @@
+@import '../../components/Global/GlobalStyle/variable.scss';
+@include container;
+.home {
+  padding: 15px;
+  @include mobile {
+    padding: 15px 0;
+  }
+}

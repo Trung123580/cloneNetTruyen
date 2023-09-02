@@ -1,0 +1,20 @@
+@import '../Global/GlobalStyle/variable.scss';
+@include container;
+.nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  // display: none;
+  z-index: 999;
+  @include mobile {
+    position: fixed;
+    top: 49px;
+    width: 100%;
+  }
+  @include table {
+    display: block !important;
+  }
+  @include pc {
+    display: block !important;
+  }
+}

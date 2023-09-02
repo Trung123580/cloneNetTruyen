@@ -1,0 +1,49 @@
+@import '../Global/GlobalStyle/variable.scss';
+.card {
+  width: 100%;
+}
+
+.next {
+  right: 13px;
+  width: 55px;
+  height: 55px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../../assets/image/next.png) no-repeat center, rgb(255, 255, 255, 0.3);
+  background-size: cover;
+  border-radius: 5px;
+  &::before {
+    content: '';
+  }
+  &:hover {
+    opacity: 0.9;
+    background: url(../../assets/image/next.png) no-repeat center, rgb(255, 255, 255, 0.7);
+    width: 55px;
+    background-size: cover;
+    height: 55px;
+  }
+}
+.prev {
+  left: 13px;
+  width: 55px;
+  height: 55px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../../assets/image/prev.png) no-repeat center, rgb(255, 255, 255, 0.3);
+  background-size: cover;
+  border-radius: 5px;
+  &::before {
+    content: '';
+  }
+  &:hover {
+    opacity: 0.9;
+    background: url(../../assets/image/prev.png) no-repeat center, rgb(255, 255, 255, 0.7);
+    width: 55px;
+    background-size: cover;
+    height: 55px;
+  }
+}

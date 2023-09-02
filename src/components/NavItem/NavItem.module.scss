@@ -1,0 +1,109 @@
+@import '../Global/GlobalStyle/variable.scss';
+@include container;
+.nav {
+  &-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 15px;
+      background-color: #141414;
+    }
+  }
+  &-item {
+    &:nth-child(6) a {
+      padding: 12px 30px 12px 12px;
+    }
+    &:hover:nth-child(6) a {
+      background-color: #fff;
+      transition: 0.3s;
+    }
+    position: relative;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    border-right: solid 1px #ddd;
+    font-weight: 500;
+    line-height: 20px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    @include mobile {
+      border-right-color: transparent;
+      width: 100%;
+    }
+    a {
+      padding: 10px 11px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      &.active {
+        background-color: rgb(255, 255, 255, 0.9);
+        color: $color-purple !important;
+        @include mobile {
+          background-color: transparent;
+        }
+      }
+      &:hover {
+        background: $bg-color;
+        color: $color-purple !important;
+      }
+      @include mobile {
+        color: #fff !important;
+        &:hover {
+          background: transparent;
+          color: #d0b32e !important;
+        }
+        &.active {
+          color: #d0b32e !important;
+        }
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        span {
+          display: inline-block;
+          width: 30px;
+        }
+        span:first-child {
+          position: absolute;
+          top: 12%;
+        }
+        span:last-child {
+          position: absolute;
+          bottom: 5%;
+        }
+      }
+    }
+    .category {
+      position: absolute;
+      top: 100%;
+      background-color: #fff;
+      border: 1px solid #d9d9d9;
+      -moz-box-shadow: 0 3px 8px rgba(3, 3, 3, 0.26);
+      -webkit-box-shadow: 0 3px 8px rgba(3, 3, 3, 0.26);
+      box-shadow: 0 3px 8px rgba(3, 3, 3, 0.26);
+      left: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      flex-direction: column-reverse;
+      padding: 5px 25px;
+      gap: 0 30px;
+      @include mobile {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .category-item {
+        line-height: 32px;
+        width: 130px;
+        &:hover {
+          color: $color-purple;
+          @include transition;
+        }
+      }
+    }
+  }
+}
