@@ -1,29 +1,40 @@
-import { useState } from 'react';
 import style from '../NavItem.module.scss';
 import classNames from 'classnames/bind';
+import { dataList } from '~/constant';
+import { useState } from 'react';
 const cx = classNames.bind(style);
-function Category({ category, item }) {
-  const [desc, setDesc] = useState('');
+function Category({ item, isToggle, onCallApiCategory }) {
+  const [showDesc, setShowDesc] = useState('');
+  const handleMoveShowDesc = (desc) => {
+    setShowDesc(desc);
+  };
+  const handleMoveDisabled = () => {
+    setShowDesc('');
+  };
   return (
     <>
       {!!item?.categoryList && (
-        <ul className={cx('category')}>
-          {!!category.length > 0 &&
-            category.map((item, index) => {
-              const { id, name, description } = item;
-              setDesc(description);
+        <div className={cx('wrapper')} style={{ background: isToggle ? '#fff' : '#000', color: !isToggle && '#fff' }}>
+          <ul className={cx('category')}>
+            {dataList.map((item) => {
+              const { id, name, description, selector } = item;
               return (
                 <li
                   key={id}
+                  style={{ color: !!selector && '#e74c3c', fontWeight: !!selector && '700' }}
                   className={cx('category-item', {
                     active: id === 'all' && true,
-                  })}>
+                  })}
+                  onMouseMove={() => handleMoveShowDesc(description)}
+                  onMouseLeave={() => handleMoveDisabled()}
+                  onClick={() => onCallApiCategory(id)}>
                   {name}
                 </li>
               );
             })}
-          <div className={cx('description')}>{desc}</div>
-        </ul>
+          </ul>
+          <div className={cx('description')}>{showDesc}</div>
+        </div>
       )}
     </>
   );

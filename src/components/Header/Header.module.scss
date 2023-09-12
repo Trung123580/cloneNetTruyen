@@ -46,14 +46,37 @@
           width: 20px;
           height: 4px;
           background-color: #fff;
-          transition: 0.5s;
+          transition: 0.5s !important;
+          &:first-child {
+            &.active {
+              position: absolute;
+              background-color: #fff;
+              transform: rotate(45deg);
+              top: 12.5px;
+              border-radius: 1px;
+            }
+          }
+          &:nth-child(2) {
+            &.active {
+              display: none !important;
+            }
+          }
+          &:last-child {
+            &.active {
+              position: absolute;
+              background-color: #fff;
+              transform: rotate(-45deg);
+              top: 12.5px;
+              border-radius: 1px;
+            }
+          }
         }
       }
     }
   }
   &-logo {
     //
-    > img {
+    a > img {
       object-fit: cover;
       cursor: pointer;
     }

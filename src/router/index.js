@@ -1,5 +1,4 @@
-import { Home, Hot, Follow, Search, History, Logins, Register, Category, Men, Women } from '~/pages';
-import { ReadStory, Details } from '~/components/layout';
+import { Home, Hot, Follow, Search, History, Logins, Register, Category, Men, Women, ReadStory, Details } from '~/pages';
 import CottageIcon from '@mui/icons-material/Cottage';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 const publicRoutes = [

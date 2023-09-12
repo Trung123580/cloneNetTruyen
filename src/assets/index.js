@@ -4,4 +4,5 @@ import moon from './logos/moon-icon.svg';
 import userImg from './image/header_banner.png';
 import prev from './image/prev.png';
 import next from './image/next.png';
-export { logo, sun, moon, userImg, prev, next };
+import error from './image/error.png';
+export { logo, sun, moon, userImg, prev, next, error };

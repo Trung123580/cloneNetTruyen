@@ -1,0 +1,75 @@
+@import '../components/Global/GlobalStyle/variable.scss';
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@1,700&family=Montserrat:wght@800&display=swap');
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 70%);
+  height: calc(100% - 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: transparent;
+  span {
+    text-shadow: 7px 10px 5px rgb(200, 179, 179, 0.8);
+    font-family: 'Balsamiq Sans', cursive;
+    background-clip: text;
+    background-image: linear-gradient(180deg, $color-blue, $color-blue, $color-blue, $color-red, $color-red, $color-red);
+    -webkit-text-stroke: 3px $color-red;
+    font-size: 5rem;
+    animation: run 0.9s ease-in-out infinite;
+    @include mobile {
+      font-size: 3rem;
+    }
+    &:nth-child(2) {
+      -webkit-text-stroke: 3px $color-yellow;
+      animation-delay: 0.3s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.5s;
+      -webkit-text-stroke: 3px $color-yellow;
+    }
+    &:nth-child(5) {
+      animation-delay: 0.6s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.7s;
+      -webkit-text-stroke: 3px $color-yellow;
+    }
+    &:nth-child(7) {
+      animation-delay: 0.8s;
+    }
+    &:nth-child(8) {
+      animation-delay: 0.9s;
+      color: $color-white;
+      -webkit-text-stroke: 3px $color-blue;
+    }
+    &:nth-child(9) {
+      animation-delay: 1s;
+      -webkit-text-stroke: 3px $color-red;
+      color: $color-white;
+    }
+    &:last-child {
+      animation-delay: 1.1s;
+      color: $color-white;
+      -webkit-text-stroke: 3px $color-yellow;
+    }
+  }
+
+  @keyframes run {
+    0% {
+      transform: rotate(10deg) translateY(0);
+    }
+    50% {
+      transform: rotate(-10deg) translateY(15px);
+    }
+    100% {
+      transform: rotate(10deg) translateY(0);
+    }
+  }
+}

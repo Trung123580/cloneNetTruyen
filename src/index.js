@@ -1,13 +1,17 @@
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { GlobalStyle, Login } from '~/components/Global';
+import store from './ReduxToolkit/store';
+import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <Login>
-      <GlobalStyle>
-        <App />
-      </GlobalStyle>
-    </Login>
+    <Provider store={store}>
+      <Login>
+        <GlobalStyle>
+          <App />
+        </GlobalStyle>
+      </Login>
+    </Provider>
   </>
 );

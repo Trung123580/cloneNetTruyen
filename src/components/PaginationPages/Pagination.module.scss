@@ -1,0 +1,27 @@
+@import '../Global/GlobalStyle/variable.scss';
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+  .item {
+    color: #999;
+    padding: 5px;
+    font-size: 1.5rem;
+    border-radius: 0;
+    margin: 0 1px;
+    &:hover {
+      background-color: rgb(153, 153, 153, 0.2) !important;
+      color: $color-black !important;
+    }
+    &.active {
+      background-color: $color-blue !important;
+      color: $color-white !important;
+      @include transition;
+    }
+    &.isToggle:hover {
+      color: $color-yellow !important;
+      border: 1px solid $color-yellow !important;
+    }
+  }
+}

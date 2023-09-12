@@ -1,19 +1,32 @@
 import { memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { v4 as uuid } from 'uuid';
 import classNames from 'classnames/bind';
-import style from './NavItem.module.scss';
+import { callApi } from '~/ReduxToolkit/callApiRedux';
 import Category from './Category';
+import RankItem from './RankItem';
+import style from './NavItem.module.scss';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 const cx = classNames.bind(style);
-function NavItem({ navList, category, isMobile, isActive, isToggle }) {
-  console.log(category);
+function NavItem({ navList, isMobile, isActive, isToggle }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleCallApiCategory = (idGenres) => {
+    dispatch(callApi(idGenres));
+    navigate(`/category?${idGenres}`);
+  };
+  const handleCallApiRank = (idRank) => {
+    dispatch(callApi(idRank));
+    navigate(`/category?${idRank}`);
+  };
   return (
     <ul className={cx('nav-list')}>
       {navList.map((item, index, arr) => {
         arr[0].isMobile = isMobile;
         return (
-          <li key={index} className={cx('nav-item')}>
+          <li key={uuid()} className={cx('nav-item')}>
             <Link
               className={cx({
                 active: isActive === item.path ? true : false,
@@ -36,8 +49,8 @@ function NavItem({ navList, category, isMobile, isActive, isToggle }) {
                 </div>
               )}
             </Link>
-            <Category category={category} item={item} />
-            {!!item?.ulList && <ul className={cx('rank')}>asdads</ul>}
+            <Category item={item} isToggle={isToggle} onCallApiCategory={handleCallApiCategory} />
+            <RankItem item={item} isToggle={isToggle} onCallApiRank={handleCallApiRank} />
           </li>
         );
       })}

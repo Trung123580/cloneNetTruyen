@@ -8,4 +8,6 @@ import Logins from './Logins';
 import Register from './Register';
 import Men from './Men';
 import Women from './Women';
-export { Home, Hot, Search, History, Follow, Logins, Register, Category, Men, Women };
+import ReadStory from './ReadStory';
+import Details from './Details';
+export { Home, Hot, Search, History, Follow, Logins, Register, Category, Men, Women, ReadStory, Details };

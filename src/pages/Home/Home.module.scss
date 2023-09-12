@@ -5,4 +5,47 @@
   @include mobile {
     padding: 15px 0;
   }
+  .main {
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    gap: 30px;
+    margin-top: 20px;
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+  .wrapper {
+    position: relative;
+    .heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      div {
+        border: 1px solid $color-yellow;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        svg {
+          color: $color-yellow;
+          cursor: pointer;
+          &:hover {
+            @include transition;
+            color: $color-purple;
+          }
+        }
+      }
+    }
+    .content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+      @include mobile {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
 }

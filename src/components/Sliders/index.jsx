@@ -5,10 +5,12 @@ import 'slick-carousel/slick/slick-theme.css';
 import classNames from 'classnames/bind';
 import style from './Sliders.module.scss';
 import SliderItem from '../SliderItem';
+import { UserLogin } from '~/components/Global';
+import { v4 as uuid } from 'uuid';
+import { useContext } from 'react';
 const cx = classNames.bind(style);
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-
   return <div className={`${className} ${cx('next')}`} style={{ ...style, display: 'block' }} onClick={onClick} />;
 }
 function SamplePrevArrow(props) {
@@ -16,8 +18,9 @@ function SamplePrevArrow(props) {
   return <div className={`${className} ${cx('prev')}`} style={{ ...style, display: 'block' }} onClick={onClick} />;
 }
 const Sliders = ({ data }) => {
+  const { isToggle } = useContext(UserLogin);
   const navigate = useNavigate();
-  const handleNavigate = (details, chapterId) => {
+  const handleNavigate = (details) => {
     // chuyen huong details
     if (details) navigate(`/details?details=${details}`);
   };
@@ -28,8 +31,8 @@ const Sliders = ({ data }) => {
   const settings = {
     infinite: true,
     slidesToShow: 5,
-    slidesToScroll: 3,
-    autoplaySpeed: 3500,
+    slidesToScroll: 1,
+    autoplaySpeed: 3000,
     autoplay: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -50,13 +53,10 @@ const Sliders = ({ data }) => {
   };
   return (
     <Slider {...settings} className={cx('card')}>
-      {data ? (
-        data.map((item, index) => {
-          return <SliderItem key={index} item={item} onNavigate={handleNavigate} />;
-        })
-      ) : (
-        <></>
-      )}
+      {!!data &&
+        data.map((item) => {
+          return <SliderItem key={uuid()} item={item} onNavigate={handleNavigate} isToggle={isToggle} />;
+        })}
     </Slider>
   );
 };

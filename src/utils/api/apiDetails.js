@@ -1,5 +1,5 @@
 import axios from 'axios';
-export const callApiDetails = async (details, chapterId) => {
+const callApiDetails = async (details) => {
   try {
     const response = await axios.get(`https://comics-api.vercel.app/comics/${details}`);
     return response.data;
@@ -7,3 +7,4 @@ export const callApiDetails = async (details, chapterId) => {
     console.error('Error fetching data:', error);
   }
 };
+export default callApiDetails;

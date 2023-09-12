@@ -2,6 +2,10 @@ $color-white: #fff;
 $color-black: #333;
 $color-purple: #ae4ad9;
 $bg-color: #ebebeb;
+$color-red: #fd0405;
+$color-yellow: #ff9601;
+$color-blue: #2980b9;
+$border-color: #ddd;
 @mixin rotate {
   transform: rotate(180deg);
   transition: 0.7s;

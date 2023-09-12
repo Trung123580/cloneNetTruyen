@@ -20,9 +20,9 @@ function FormLogin({ className }) {
   useEffect(() => {
     if (info) navigate('/');
   }, [info]);
-  const handleSignOut = () => {
+  const handleSignOut = async () => {
+    await signOut(auth);
     localStorage.removeItem('user');
-    signOut(auth);
     setInfo('');
   };
   return (

@@ -1,0 +1,135 @@
+@import '../Global/GlobalStyle/variable.scss';
+.rank {
+  border-left: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  .heading {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    button {
+      padding: 12px 0;
+      font-size: 1.5rem;
+      text-align: center;
+      border: none;
+      background-color: #ecf0f1;
+      border-right: 1px solid $border-color;
+      position: relative;
+      border-top: 2px solid transparent;
+      &.active {
+        border-top: 2px solid $color-purple;
+        background-color: #f9f9f9;
+      }
+    }
+  }
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 720px;
+    border-right: 1px solid $border-color;
+    .product {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      margin: 0 10px;
+      border-top: 1px solid $border-color;
+      &:first-child {
+        border-top-color: transparent;
+        .count {
+          color: #3498db !important;
+        }
+      }
+      &:nth-child(2) {
+        .count {
+          color: #27ae60 !important;
+        }
+      }
+      &:nth-child(3) {
+        .count {
+          color: #d35400 !important;
+        }
+      }
+      .count {
+        padding-left: 10px;
+        font-size: 2rem;
+        &.active {
+          color: #a3a3a3;
+        }
+      }
+    }
+    .product .info {
+      display: flex;
+      flex: 1;
+      gap: 10px;
+      .avatar {
+        height: 50px;
+        min-width: 55px;
+        position: relative;
+        overflow: hidden;
+        img {
+          position: absolute;
+          width: 100%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .text {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-between;
+        h3 {
+          font-size: 1.6rem;
+          font-weight: 500;
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+          cursor: default;
+          -webkit-line-clamp: 1;
+          &:hover {
+            color: #03f;
+          }
+          &.active:hover {
+            color: $color-red !important;
+          }
+        }
+        .label {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 1.33rem;
+          .chapter {
+            cursor: default;
+            &:hover {
+              color: #03f;
+            }
+            &.active:hover {
+              color: $color-red !important;
+            }
+          }
+          .view {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 1.2rem;
+            span {
+              display: -webkit-box;
+              overflow: hidden;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes run {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
