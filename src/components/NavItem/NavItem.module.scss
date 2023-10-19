@@ -19,6 +19,9 @@
     &:hover:nth-child(6) a {
       background-color: #fff;
       transition: 0.3s;
+      @include mobile {
+        background-color: transparent;
+      }
     }
     position: relative;
     text-transform: uppercase;
@@ -33,6 +36,9 @@
     @include mobile {
       border-right-color: transparent;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      height: max-content;
     }
     a {
       padding: 10px 11px;
@@ -61,6 +67,14 @@
         &.active {
           color: #d0b32e !important;
         }
+      }
+      &.theme {
+        &:hover {
+          color: $color-yellow !important;
+        }
+      }
+      &.active.theme {
+        color: $color-yellow !important;
       }
       div {
         display: flex;
@@ -96,6 +110,17 @@
       left: 0;
       padding: 5px 25px;
       color: $color-black;
+      @include mobile {
+        width: 100%;
+        position: initial;
+        width: 100%;
+        background-color: $bg-theme !important;
+        color: $color-white;
+        overflow-y: scroll;
+        height: 400px;
+        // padding-bottom: 100px;
+        padding: 5px 15px;
+      }
       .category {
         border-bottom: 1px solid #e5e5e5;
         display: grid;
@@ -103,6 +128,8 @@
         gap: 0 30px;
         @include mobile {
           grid-template-columns: repeat(2, 1fr);
+          width: 100%;
+          border-bottom: 1px solid transparent;
         }
         .category-item {
           line-height: 32px;
@@ -124,11 +151,17 @@
         // -webkit-line-clamp: 1;
         // -webkit-box-orient: vertical;
         // overflow: hidden;
+        @include mobile {
+          display: none;
+        }
       }
     }
 
     .wrapper-rank {
       display: none;
+      @include mobile {
+        width: 100%;
+      }
       .rank {
         position: absolute;
         top: 100%;
@@ -143,6 +176,12 @@
         -moz-box-shadow: 0 3px 8px rgba(3, 3, 3, 0.26);
         box-shadow: 0 3px 8px rgba(3, 3, 3, 0.26);
         border-radius: 0 0 4px 4px;
+        @include mobile {
+          position: initial;
+          width: 100%;
+          background-color: $bg-theme !important;
+          color: $color-white;
+        }
         .rank-item {
           border-right: 1px solid #eee;
           border-bottom: 1px solid #eee;
@@ -169,6 +208,10 @@
           &:hover span {
             color: $color-purple;
             background-color: #eee;
+            @include mobile {
+              background-color: transparent;
+              color: $color-yellow;
+            }
           }
         }
       }

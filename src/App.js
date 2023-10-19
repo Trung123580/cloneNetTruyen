@@ -1,30 +1,24 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { publicRoutes } from '~/router';
-import { Header, Nav } from './components';
+import { Footer, Header, Nav, BackToTop } from '~/components';
+import PageUserProvider from '~/PageUserProvider';
 function App() {
-  // const navigate = useNavigate();
-  // const navigateProduct = (details, chapterId) => {
-  //   if ((details, chapterId)) navigate(`/details?details=${details}&chapter=${chapterId}`);
-  // };
-  // const navigateDetails = (details, chapterId) => {
-  //   if ((details, chapterId)) navigate(`/details?details=${details}`);
-  // };
-  // const nav = {
-  //   navigateDetails,
-  //   navigateProduct,
-  // };
   return (
     <BrowserRouter>
-      <Header />
-      <Nav />
-      <main>
-        <Routes>
-          {publicRoutes.map((route, index, arr) => {
-            const Page = route.component; //convertJSX
-            return <Route key={index} path={route.path} element={<Page />} />;
-          })}
-        </Routes>
-      </main>
+      <PageUserProvider>
+        <Header />
+        <Nav />
+        <main>
+          <Routes>
+            {publicRoutes.map((route, index) => {
+              const Page = route.component; //convertJSX
+              return <Route key={index} path={route.path} element={<Page />} />;
+            })}
+          </Routes>
+        </main>
+      </PageUserProvider>
+      <Footer />
+      <BackToTop />
     </BrowserRouter>
   );
 }

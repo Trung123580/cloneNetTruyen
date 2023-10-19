@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import style from './SliderItem.module.scss';
 import AvTimerIcon from '@mui/icons-material/AvTimer';
 const cx = classNames.bind(style);
-function SliderItem({ item, onNavigate, isToggle }) {
+function SliderItem({ item, onNavigate, isToggle, onNavigateChapter }) {
   const {
     thumbnail,
     title,
@@ -31,7 +31,8 @@ function SliderItem({ item, onNavigate, isToggle }) {
         <div
           className={cx('caption', {
             active: isToggle ? false : true,
-          })}>
+          })}
+          onClick={onNavigateChapter}>
           <span className={cx('chapter')}>{storyName}</span>
           <span className={cx('time')}>
             <AvTimerIcon /> {updateTime}

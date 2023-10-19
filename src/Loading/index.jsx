@@ -3,11 +3,13 @@ import { loading } from '~/constant';
 import classNames from 'classnames/bind';
 import style from './Loading.module.scss';
 const cx = classNames.bind(style);
-const Loading = () => {
+const Loading = ({ size }) => {
   return (
     <div id={cx('loading')}>
       {loading.map((item) => (
-        <span key={uuid()}>{item}</span>
+        <span key={uuid()} style={{ fontSize: `${size}` }}>
+          {item}
+        </span>
       ))}
     </div>
   );

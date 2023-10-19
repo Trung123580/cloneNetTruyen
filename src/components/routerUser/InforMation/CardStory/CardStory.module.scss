@@ -1,0 +1,85 @@
+@import '../../../Global/GlobalStyle/variable.scss';
+.list-story {
+  display: grid;
+  grid-template-columns: 1.5fr 4.5fr 3fr 3fr;
+  .avatar {
+    width: 50px;
+    max-height: 50px;
+    overflow: hidden;
+    line-height: 50px;
+    margin-left: 10px;
+    @include mobile {
+      margin-left: 0;
+    }
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .name-story {
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    @include mobile {
+      margin-left: 10px;
+    }
+    span {
+      cursor: pointer;
+    }
+    span:first-child {
+      font-weight: 700;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      max-width: 80%;
+      color: $color-blue;
+      @include mobile {
+        font-size: 1rem;
+        -webkit-line-clamp: 2;
+      }
+      &:hover {
+        color: $color-purple;
+        @include transition;
+      }
+      &.isToggle {
+        color: $color-yellow;
+        &:hover {
+          @include transition;
+          color: $color-red;
+        }
+      }
+    }
+    span:last-child {
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: $color-red;
+      font-size: 1.3rem;
+      @include mobile {
+        font-size: 1rem;
+      }
+    }
+  }
+  .new-chapter,
+  .history {
+    font-size: 1.3rem;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    @include mobile {
+      font-size: 1.1rem;
+    }
+    &:hover {
+      color: $color-blue;
+      cursor: pointer;
+    }
+    &.isToggle {
+      &:hover {
+        color: $color-red;
+      }
+    }
+  }
+}

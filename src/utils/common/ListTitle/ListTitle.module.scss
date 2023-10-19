@@ -1,0 +1,16 @@
+@import '../../../components/Global/GlobalStyle/variable.scss';
+.title {
+  display: flex;
+  gap: 5px;
+  font-size: 1.7rem;
+  align-items: center;
+  text-transform: uppercase;
+  color: #2980b9;
+  border-bottom: 2px solid #2980b9;
+  padding-bottom: 5px;
+  margin: 10px 0;
+  &.isToggle {
+    color: $color-yellow;
+    border-bottom-color: $color-yellow;
+  }
+}

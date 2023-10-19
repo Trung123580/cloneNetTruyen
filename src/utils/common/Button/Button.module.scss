@@ -1,0 +1,99 @@
+@import '../../../components/Global/GlobalStyle/variable.scss';
+.btn {
+  color: $color-white;
+  padding: 6px 12px;
+  font-size: 1.4rem;
+  border-radius: 4px;
+  border: 1px solid $border-color;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  text-transform: capitalize;
+  color: $color-black;
+  @include mobile {
+    font-size: 1rem;
+    padding: 5px 10px;
+    svg {
+      font-size: 1rem;
+    }
+  }
+  &:active:focus {
+    outline: dotted thin;
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-offset: -2px;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  }
+  &.success {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    color: $color-white;
+    &:hover {
+      background-color: #449d44;
+      border-color: #398439;
+    }
+    &:disabled:hover {
+      background-color: #000;
+      opacity: 0.3;
+    }
+  }
+  &.warning {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    color: $color-white;
+
+    &:hover {
+      background-color: #ec971f;
+      border-color: #d58512;
+    }
+    &:disabled:hover {
+      background-color: #000;
+      opacity: 0.3;
+    }
+  }
+  &.error {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    color: $color-white;
+    &:hover {
+      background-color: #d4403b;
+      border-color: #b42520;
+    }
+    &:disabled:hover {
+      background-color: #000;
+      opacity: 0.3;
+    }
+  }
+  &:focus {
+    outline: dotted thin;
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-offset: -2px;
+  }
+  &.btn-fb {
+    background-color: $color-blue;
+    border-color: rgb(255, 0, 0, 0.2);
+    color: $color-white;
+    &:hover {
+      background-color: #3990b9;
+    }
+  }
+  &.btn-gg {
+    background-color: #dd4b39;
+    border-color: rgba(0, 0, 0, 0.2);
+    color: $color-white;
+
+    &:hover {
+      background-color: #c23321;
+    }
+  }
+  &:disabled {
+    background-color: #000;
+    opacity: 0.3;
+  }
+  @include mobile {
+    height: 34px;
+  }
+}

@@ -1,0 +1,192 @@
+@import '../../components/Global/GlobalStyle/variable.scss';
+@include container;
+.dashboard {
+  background-color: $bg-noTheme;
+  padding: 15px 15px 30px;
+  &.theme {
+    background-color: $bg-theme;
+  }
+  .main {
+    display: grid;
+    grid-template-columns: 2.7fr 9.3fr;
+    margin-top: 15px;
+    gap: 30px;
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  .user {
+    background: #222;
+    display: flex;
+    align-items: center;
+    color: $color-white;
+    gap: 5px;
+    .avatar {
+      height: 80px;
+      min-width: 80px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .other-name {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .flex {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-size: 1.3rem;
+        span {
+          opacity: 0.8;
+          font-weight: 400;
+        }
+        h4 {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+          font-weight: 700;
+          font-size: 1.35rem;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+  color: $color-black;
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+    font-size: 1.4rem;
+    font-weight: 300;
+    &:hover {
+      background: linear-gradient(-45deg, #e6e6e6, #23d5ab, #e6e6e6, #23d5ab, #e6e6e6);
+      background-size: 400% 400%;
+      -webkit-animation: gradient 15s linear infinite;
+      animation: gradient 15s ease infinite;
+    }
+    &.active {
+      font-weight: 700;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+        background-color: #ee2c74;
+        -webkit-animation: left-border 0.2s linear infinite;
+        animation: left-border 0.2s linear forwards;
+        z-index: 3;
+      }
+    }
+  }
+}
+.wrapper {
+  position: relative;
+}
+.line {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+
+  &.active {
+    position: absolute;
+    height: 100%;
+    width: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    -webkit-animation: bg-run 1s linear infinite;
+    animation: bg-run 1s ease-out forwards;
+    &::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: #e6e6e6;
+      -webkit-animation: run 0.4s linear infinite;
+      animation: run 0.4s ease-out forwards;
+      -webkit-transform-origin: 0 50%;
+      transform-origin: 0 50%;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out;
+      z-index: 2;
+    }
+  }
+}
+@keyframes run {
+  0% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+  100% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+  }
+}
+@keyframes bg-run {
+  0% {
+    background: transparent;
+  }
+  100% {
+    background: #e6e6e6;
+  }
+}
+
+@keyframes left-border {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+@keyframes hover {
+  0% {
+    width: 0;
+    background: red;
+  }
+  100% {
+    width: 100%;
+    background: red;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

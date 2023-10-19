@@ -1,0 +1,13 @@
+@import '../Global/GlobalStyle/variable.scss';
+.history {
+  border: 1px solid $border-color;
+  padding: 10px;
+  .content {
+    padding: 10px 0;
+    border-top: 1px solid $border-color;
+    .story {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, FacebookAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { getFirestore } from '@firebase/firestore';
+import { getStorage } from 'firebase/storage';
 const firebaseConfig = {
   apiKey: 'AIzaSyCpMWComvM2pxCYslyBBY5pP4BQ2DzeCsw',
   authDomain: 'nettruyen-f0399.firebaseapp.com',
@@ -13,6 +15,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 const FbProvider = new FacebookAuthProvider();
 const GgProvider = new GoogleAuthProvider();
-export { auth, FbProvider, GgProvider };
+const storage = getStorage(app);
+export { auth, FbProvider, GgProvider, db, storage };

@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { v4 as uuid } from 'uuid';
 import { error } from '~/assets';
 import style from './CardDetail.module.scss';
 const cx = classNames.bind(style);
@@ -24,7 +25,7 @@ const CardDetail = ({ data, isToggle }) => {
           <p>
             Thể loại :{' '}
             {genres.map((genre) => (
-              <span key={genre.id}>{genre.name}, </span>
+              <span key={uuid()}>{genre.name}, </span>
             ))}
           </p>
           <p>

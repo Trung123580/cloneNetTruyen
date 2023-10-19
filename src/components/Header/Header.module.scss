@@ -5,11 +5,18 @@
   height: 50px;
   display: flex;
   position: relative;
+  z-index: 999;
+  width: 100%;
   @include mobile {
-    position: sticky;
-    top: 0;
-    z-index: 9999;
+    &.Scroll {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      left: 0;
+      z-index: 810;
+    }
   }
+
   &-content {
     display: flex;
     align-items: center;

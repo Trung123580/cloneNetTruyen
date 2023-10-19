@@ -21,13 +21,12 @@ const Sliders = ({ data }) => {
   const { isToggle } = useContext(UserLogin);
   const navigate = useNavigate();
   const handleNavigate = (details) => {
-    // chuyen huong details
     if (details) navigate(`/details?details=${details}`);
   };
-  // chuyen huong chappter
-  // const handleNavigate = (details, chapterId) => {
-  //   if ((details, chapterId)) navigate(`/details?details=${details}&chapter=${chapterId}`);
-  // };
+  const handleNavigateChapter = (e, comicsId, chapterId) => {
+    e.stopPropagation();
+    navigate(`/readStory?comicsId=${comicsId}&chapterId=${chapterId}`);
+  };
   const settings = {
     infinite: true,
     slidesToShow: 5,
@@ -55,7 +54,15 @@ const Sliders = ({ data }) => {
     <Slider {...settings} className={cx('card')}>
       {!!data &&
         data.map((item) => {
-          return <SliderItem key={uuid()} item={item} onNavigate={handleNavigate} isToggle={isToggle} />;
+          return (
+            <SliderItem
+              key={uuid()}
+              item={item}
+              onNavigateChapter={(e) => handleNavigateChapter(e, item?.id, item?.lastest_chapter?.id || item?.last_chapter.id)}
+              onNavigate={handleNavigate}
+              isToggle={isToggle}
+            />
+          );
         })}
     </Slider>
   );

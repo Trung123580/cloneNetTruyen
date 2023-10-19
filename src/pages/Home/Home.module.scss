@@ -2,6 +2,10 @@
 @include container;
 .home {
   padding: 15px;
+  background-color: $bg-noTheme;
+  &.theme {
+    background-color: $bg-theme;
+  }
   @include mobile {
     padding: 15px 0;
   }
@@ -45,6 +49,9 @@
       margin-top: 10px;
       @include mobile {
         grid-template-columns: repeat(2, 1fr);
+      }
+      @include table {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   }

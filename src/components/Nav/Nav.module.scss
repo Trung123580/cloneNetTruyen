@@ -5,11 +5,17 @@
   position: sticky;
   top: -1px;
   // display: none;
-  z-index: 999;
+  z-index: 800;
+  background-color: #bebebe;
   @include mobile {
     position: fixed;
     top: 49px;
     width: 100%;
+    height: 100%;
+    background-color: #141414;
+  }
+  &.theme {
+    background-color: #141414;
   }
   @include table {
     display: block !important;
@@ -17,4 +23,12 @@
   @include pc {
     display: block !important;
   }
+  // .nav-menu {
+  //   position: absolute;
+  //   width: 100%;
+  //   top: 0;
+  // }
+  // .nav-menu div:last-child {
+  //   display: none;
+  // }
 }

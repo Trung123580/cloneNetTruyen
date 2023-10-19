@@ -1,0 +1,31 @@
+@import '../../Global/GlobalStyle/variable.scss';
+.enter-input {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d3d6db;
+  width: 100%;
+  textarea {
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    min-width: 100%;
+    max-width: 560px;
+    font-family: Tahoma, sans-serif, Helvetica, Arial;
+    min-height: 58px;
+    &::placeholder {
+      color: #999;
+    }
+  }
+  .wrapper-btn {
+    background-color: #f5f6f7;
+    padding: 8px;
+    border-top: 1px solid #d3d6db;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    justify-content: flex-end;
+  }
+}

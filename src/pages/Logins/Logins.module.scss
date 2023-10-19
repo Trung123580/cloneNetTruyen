@@ -1,2 +1,36 @@
 @import '../../components/Global/GlobalStyle/variable.scss';
 @include container;
+
+.logins {
+  padding: 15px 15px 30px;
+  background-color: $bg-noTheme;
+  &.theme {
+    background-color: $bg-theme;
+  }
+}
+.form-logins {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 50%;
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      position: relative;
+      &::after {
+        position: absolute;
+        content: '';
+        top: 110%;
+        left: 0;
+        height: 3px;
+        width: 12%;
+        background-color: $color-red;
+      }
+    }
+  }
+}

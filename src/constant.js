@@ -1,8 +1,18 @@
+import { v4 as uuid } from 'uuid';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CachedIcon from '@mui/icons-material/Cached';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import CallToActionIcon from '@mui/icons-material/CallToAction';
+import InfoIcon from '@mui/icons-material/Info';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import QuestionAnswerRoundedIcon from '@mui/icons-material/QuestionAnswerRounded';
+import LockIcon from '@mui/icons-material/Lock';
+import LogoutIcon from '@mui/icons-material/Logout';
 const dataList = [
   { id: 'all', name: 'Tất cả', description: 'Tất cả thể loại truyện tranh', selector: true },
 
@@ -212,15 +222,56 @@ const loading = ['L', 'o', 'a', 'd', 'i', 'n', 'g', '.', '.', '.'];
 const sidebarRank = [
   {
     rank: 'monthly',
-    name: 'Tốp Tháng',
+    name: 'Top Tháng',
   },
   {
     rank: 'weekly',
-    name: 'Tốp Tuần',
+    name: 'Top Tuần',
   },
   {
     rank: 'daily',
-    name: 'Tóp Ngày',
+    name: 'Top Ngày',
   },
 ];
-export { dataList, ranks, loading, sidebarRank };
+const keyWord = [
+  { name: 'Truyện tranh' },
+  { name: 'Truyện tranh online' },
+  { name: 'Đọc truyện tranh' },
+  { name: 'Truyện tranh hot', nav: '/hot' },
+  { name: 'Truyện tranh hay' },
+  { name: 'Truyện ngôn tình', genres: 'ngon-tinh' },
+  { name: 'ManhWa', genres: 'manhwa-11400' },
+  { name: 'Manga', genres: 'manga-112' },
+  { name: 'Manhua', genres: 'manhua' },
+  { name: 'Truyện QQ' },
+  { name: 'mi2manga' },
+  { name: 'doctruyen3q' },
+  { name: 'toptruyen' },
+  { name: 'cmanga' },
+  { name: 'vlogtruyen' },
+  { name: 'truyentranhaudio' },
+  { name: 'vcomi' },
+];
+const sortsGenres = [
+  { name: 'Ngày cập nhật', api: 'recent-update-comics' },
+  { name: 'Truyện mới', api: 'new-comics' },
+  { name: 'Top all', icon: <VisibilityIcon />, api: 'top' },
+  { name: 'Top tháng', icon: <VisibilityIcon />, api: 'top/monthly' },
+  { name: 'Top tuần', icon: <VisibilityIcon />, api: 'top/weekly' },
+  { name: 'Top ngày', icon: <VisibilityIcon />, api: 'top/daily' },
+  { name: 'Theo dõi', icon: <FavoriteIcon />, api: 'top/follow' },
+  { name: 'Bình luận', icon: <ChatBubbleIcon />, api: 'top/comment' },
+  { name: 'Số chapter', icon: <FormatListBulletedIcon />, api: 'top/chapter' },
+];
+const listDashboard = [
+  { id: uuid(), name: 'Thông tin chung', icon: <CallToActionIcon /> },
+  { id: uuid(), name: 'Thông tin tài khoản', icon: <InfoIcon /> },
+  { id: uuid(), name: 'Truyện đang theo dõi', icon: <MenuBookIcon /> },
+  { id: uuid(), name: 'Truyện đã đăng', icon: <FormatListBulletedIcon /> },
+  { id: uuid(), name: 'Bình luận', icon: <QuestionAnswerRoundedIcon /> },
+  { id: uuid(), name: 'Thông báo', icon: <ChatBubbleIcon /> },
+  { id: uuid(), name: 'Đổi mật khẩu', icon: <LockIcon /> },
+  { id: uuid(), name: 'Thoát', icon: <LogoutIcon /> },
+];
+export { dataList, ranks, loading, sidebarRank, keyWord, sortsGenres, listDashboard };
+// .toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') chuyển đổi 300000 thành 3.000.000

@@ -7,16 +7,17 @@ import CardDetail from './CardDetail';
 import { error } from '~/assets';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import CloseIcon from '@mui/icons-material/Close';
 const cx = classNames.bind(style);
-const Card = ({ data, isToggle, onNavigateDetails }) => {
+const Card = ({ data, isToggle, onNavigateDetails, onChapterReading, unFollow, onDeleteFollow }) => {
   const {
     id: auth,
     title,
     thumbnail,
-    short_description: description,
     total_views: totalViews,
     updated_at: updateTime,
     last_chapter: lastChapter,
+    short_description: description,
     followers,
     other_names: otherName,
     genres,
@@ -27,27 +28,33 @@ const Card = ({ data, isToggle, onNavigateDetails }) => {
     otherName,
     thumbnail,
     genres,
+    // description: data?.short_description || data?.description,
     description,
     auth,
     status,
     totalViews,
     followers,
-    updateTime,
+    updateTime: updateTime ? updateTime : '1 ngày trước',
   };
   return (
-    <div className={cx('card')} onClick={() => onNavigateDetails(auth)}>
+    <div className={cx('card')} onClick={onNavigateDetails}>
       <div className={cx('thumbnail')}>
         <img src={thumbnail || error} alt='error' />
         <div className={cx('position')}>
           <span>
-            <VisibilityIcon /> {totalViews}
+            <VisibilityIcon /> {totalViews.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}
           </span>
           <span>
-            <FavoriteIcon /> {followers}
+            <FavoriteIcon /> {followers.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}
           </span>
         </div>
       </div>
       <div className={cx('content')}>
+        {!!unFollow && (
+          <span className={cx('un-follow')} onClick={onDeleteFollow}>
+            <CloseIcon /> {unFollow}
+          </span>
+        )}
         <Tippy
           content={<CardDetail data={dataCardDetail} isToggle={isToggle} />}
           followCursor='horizontal'
@@ -62,16 +69,15 @@ const Card = ({ data, isToggle, onNavigateDetails }) => {
             {title}
           </h3>
         </Tippy>
-        <div className={cx('chapter')}>
+        <div className={cx('chapter')} onClick={onChapterReading}>
           <span
             className={cx('chapter-item', {
               hover: isToggle ? false : true,
             })}>
-            {lastChapter.name}
+            {lastChapter?.name || data?.chapters[0]?.name}
           </span>
-          <span className={cx('time')}>{updateTime}</span>
+          <span className={cx('time')}>{updateTime || '1 ngày trước'}</span>
         </div>
-        {/* lastChapter.id */}
       </div>
     </div>
   );

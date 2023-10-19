@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import classNames from 'classnames/bind';
-import { callApi } from '~/ReduxToolkit/callApiRedux';
+import { callApi, descriptionStory, nameGenres, apiRanks } from '~/ReduxToolkit/callApiRedux';
 import Category from './Category';
 import RankItem from './RankItem';
 import style from './NavItem.module.scss';
@@ -13,12 +13,14 @@ const cx = classNames.bind(style);
 function NavItem({ navList, isMobile, isActive, isToggle }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleCallApiCategory = (idGenres) => {
+  const handleCallApiCategory = (idGenres, description, name) => {
     dispatch(callApi(idGenres));
+    dispatch(nameGenres(name));
+    dispatch(descriptionStory(description));
     navigate(`/category?${idGenres}`);
   };
   const handleCallApiRank = (idRank) => {
-    dispatch(callApi(idRank));
+    dispatch(apiRanks(idRank));
     navigate(`/category?${idRank}`);
   };
   return (
@@ -30,6 +32,7 @@ function NavItem({ navList, isMobile, isActive, isToggle }) {
             <Link
               className={cx({
                 active: isActive === item.path ? true : false,
+                theme: isToggle ? false : true,
               })}
               to={item.path}
               style={{

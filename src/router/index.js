@@ -1,4 +1,15 @@
-import { Home, Hot, Follow, Search, History, Logins, Register, Category, Men, Women, ReadStory, Details } from '~/pages';
+import { Home, Hot, Follow, Search, History, Logins, Register, Category, Men, Women, ReadStory, Details, ForgetPassword, DashBoard } from '~/pages';
+import {
+  InforMation,
+  UserProfile,
+  UserFollowStory,
+  UserUpdateStory,
+  UserComment,
+  UserNotification,
+  UserChangePassword,
+  UserSignOut,
+} from '~/components/routerUser';
+import { v4 as uuid } from 'uuid';
 import CottageIcon from '@mui/icons-material/Cottage';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 const publicRoutes = [
@@ -16,6 +27,8 @@ const publicRoutes = [
   { path: '/women', component: Women },
   { path: '/readStory', component: ReadStory },
   { path: '/details', component: Details },
+  { path: '/forgetPassword', component: ForgetPassword },
+  { path: '/dashboard', component: DashBoard },
 ];
 const navList = [
   //   // dùng khi không cần đăng nhập vẫn xem đx
@@ -25,12 +38,17 @@ const navList = [
   { name: 'lịch sử', path: '/history', component: History },
   { name: 'thể loại', categoryList: true, icon: <ArrowDropDownIcon fontSize='large' />, path: '/category', component: Category }, //tim` truyen
   { name: 'xếp hạng', ulList: true, block: true, path: '#', component: '/' }, //tim` truyen
-  { name: 'tìm truyện', path: '/search', component: Search },
-  { name: 'con gái', path: '/men', component: Men },
-  { name: 'con trai ', path: '/women', component: Women },
+  { name: 'con gái', path: '/women', component: Men },
+  { name: 'con trai ', path: '/men', component: Women },
 ];
-const privateRoute = [
-  // dùng khi phải  đăng nhập mới xem đx
+const routerUserInfo = [
+  { id: uuid(), component: InforMation },
+  { id: uuid(), component: UserProfile },
+  { id: uuid(), component: UserFollowStory },
+  { id: uuid(), component: UserUpdateStory },
+  { id: uuid(), component: UserComment },
+  { id: uuid(), component: UserNotification },
+  { id: uuid(), component: UserChangePassword },
+  { id: uuid(), component: UserSignOut },
 ];
-
-export { publicRoutes, privateRoute, navList };
+export { publicRoutes, navList, routerUserInfo };

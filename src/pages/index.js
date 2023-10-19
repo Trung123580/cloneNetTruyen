@@ -10,4 +10,6 @@ import Men from './Men';
 import Women from './Women';
 import ReadStory from './ReadStory';
 import Details from './Details';
-export { Home, Hot, Search, History, Follow, Logins, Register, Category, Men, Women, ReadStory, Details };
+import ForgetPassword from './ForgetPassword';
+import DashBoard from './DashBoard';
+export { Home, Hot, Search, History, Follow, Logins, Register, Category, Men, Women, ReadStory, Details, ForgetPassword, DashBoard };

@@ -1,0 +1,29 @@
+@import '../../Global/GlobalStyle/variable.scss';
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: $color-blue;
+    &.active {
+      color: $color-yellow;
+    }
+  }
+  span {
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 22px;
+    color: #000;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+      color: $color-blue;
+    }
+    &.active {
+      color: $color-white;
+    }
+  }
+}

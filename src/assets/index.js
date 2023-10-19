@@ -1,8 +1,11 @@
 import logo from './logos/logo-nettruyen.png';
 import sun from './logos/sun-icon.svg';
 import moon from './logos/moon-icon.svg';
-import userImg from './image/header_banner.png';
+import sortInit from './logos/sort-init.svg';
+import sortReverse from './logos/sort-reverse.svg';
+// import userImg from './image/header_banner.png';
 import prev from './image/prev.png';
 import next from './image/next.png';
 import error from './image/error.png';
-export { logo, sun, moon, userImg, prev, next, error };
+import noFollow from './image/huong-dan-theo-doi-truyen.jpg';
+export { logo, sun, moon, prev, next, error, sortInit, sortReverse, noFollow };

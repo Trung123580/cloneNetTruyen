@@ -1,8 +1,11 @@
 import axios from 'axios';
-const callApiGenres = async (genres) => {
+const callApiGenres = async (currentApi, genres, page) => {
+  console.log(currentApi);
   try {
-    const response = await axios.get(`https://comics-api.vercel.app/genres/${genres}`);
-    return response.data;
+    const response = await axios.get(
+      `https://comics-api.vercel.app/${currentApi ? `${currentApi}` : 'genres'}${currentApi ? '' : `/${genres}`}?page=${page}`
+    );
+    return await response.data;
   } catch (error) {
     throw error;
   }

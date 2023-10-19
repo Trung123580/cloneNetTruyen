@@ -27,7 +27,7 @@ function Category({ item, isToggle, onCallApiCategory }) {
                   })}
                   onMouseMove={() => handleMoveShowDesc(description)}
                   onMouseLeave={() => handleMoveDisabled()}
-                  onClick={() => onCallApiCategory(id)}>
+                  onClick={() => onCallApiCategory(id, description, name)}>
                   {name}
                 </li>
               );

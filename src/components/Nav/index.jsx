@@ -11,14 +11,15 @@ function Nav() {
   const [isMobile, setIsMobile] = useState(false);
   const { navBar, isToggle } = useContext(UserLogin);
   const location = useLocation(); // lấy đến dường dẫn path đang hiện thị ở view
-  // Chạy sau khi component đã được mount
-  const checkScreenWidth = () => {
-    return window.innerWidth <= 768 ? setIsMobile(true) : setIsMobile(false);
-  };
   useEffect(() => {
     // component dang duoc render theo path
     setIsActive(location.pathname);
   }, [location.pathname]);
+
+  // Chạy sau khi component đã được mount
+  const checkScreenWidth = () => {
+    return window.innerWidth <= 768 ? setIsMobile(true) : setIsMobile(false);
+  };
 
   useEffect(() => {
     checkScreenWidth();
@@ -29,7 +30,11 @@ function Nav() {
   }, [isMobile]);
 
   return (
-    <nav ref={navBar} className={cx('nav')} style={{ background: isToggle ? '#bebebe ' : '#141414' }}>
+    <nav
+      ref={navBar}
+      className={cx('nav', {
+        theme: isToggle ? false : true,
+      })}>
       <div className={cx('container')} style={{ padding: isMobile ? '0px' : '0px 15px' }}>
         <div className={cx('nav-menu')}>
           <FormSearch className='from-search-mobile' />

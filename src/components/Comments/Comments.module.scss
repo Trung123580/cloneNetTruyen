@@ -1,0 +1,56 @@
+@import '../Global/GlobalStyle/variable.scss';
+@include container;
+.layout {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: 30px;
+  background-color: $bg-noTheme;
+  padding: 0 15px;
+  &.theme {
+    background-color: $bg-theme;
+  }
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+.comments {
+  width: 100%;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .user {
+    display: flex;
+    gap: 7px;
+    .avatar {
+      height: 48px;
+      width: 48px;
+      img {
+        min-width: 48px;
+        height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  .from-comments {
+    width: 100%;
+    .note {
+      background-color: #fff;
+      color: #999;
+      padding: 5px 10px;
+      height: 100%;
+      cursor: text;
+      border: 1px solid #bbb;
+      font-size: 1.4rem;
+      width: 100%;
+    }
+  }
+  .content {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

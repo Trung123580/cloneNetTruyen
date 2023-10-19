@@ -35,8 +35,21 @@
     }
   }
   .content {
+    .un-follow {
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 3px;
+      color: #d9534f;
+      padding: 2px 0;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
     .name {
-      font-size: 1.65rem;
+      font-size: 1.55rem;
       margin: 0 0 7px;
       font-weight: 500;
       overflow: hidden;
@@ -60,6 +73,11 @@
         font-size: 1.4rem;
         font-weight: 500;
         cursor: pointer;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        max-width: 70%;
         &:hover {
           color: $color-blue;
         }

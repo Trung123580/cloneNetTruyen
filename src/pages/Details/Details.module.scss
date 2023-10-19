@@ -1,2 +1,296 @@
 @import '../../components/Global/GlobalStyle/variable.scss';
 @include container;
+@include mobile {
+  .container {
+    padding: 0;
+  }
+}
+.details {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 8fr 4fr;
+  padding: 15px;
+  background-color: #fff;
+  cursor: default;
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+  &.isToggle {
+    background-color: #252525;
+  }
+  .main .content {
+    .title {
+      text-align: center;
+      margin: 15px 0 20px;
+      font-size: 2.1rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      @include mobile {
+        font-size: 1.8rem;
+      }
+    }
+    .info {
+      display: grid;
+      grid-template-columns: 4fr 8fr;
+      color: #777676;
+      gap: 30px;
+      @include mobile {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        .center {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      &.isToggle {
+        color: $color-white;
+      }
+      .avatar {
+        @include mobile {
+          max-height: 250px;
+          max-width: 188px;
+        }
+        img {
+          object-fit: cover;
+          width: 100%;
+        }
+      }
+    }
+    .info .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      @include mobile {
+        gap: 5px;
+      }
+      .item {
+        display: grid;
+        grid-template-columns: 4fr 8fr;
+        span {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          line-height: 27px;
+          font-weight: 400;
+          font-size: 1.6rem;
+          @include mobile {
+            font-size: 1.4rem;
+          }
+        }
+        p {
+          display: flex;
+          flex-wrap: wrap;
+          line-height: 27px;
+          gap: 0 15px;
+          @include mobile {
+            font-size: 1.4rem;
+          }
+          span {
+            color: $color-blue;
+            position: relative;
+            @include mobile {
+              font-size: 1.4rem;
+            }
+            &.isToggle {
+              color: $color-yellow;
+              &:hover {
+                color: $color-red;
+              }
+            }
+            &:hover {
+              color: $color-purple;
+              text-decoration: underline;
+            }
+            &:hover strong {
+              text-decoration: none;
+            }
+            strong {
+              position: absolute;
+              font-size: 1.4rem;
+              left: 105%;
+            }
+          }
+        }
+      }
+    }
+    .info .follow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 30px 0 10px;
+      p {
+        color: #000;
+        font-weight: 700;
+        font-size: 1.5rem;
+        display: flex;
+        gap: 5px;
+
+        &.isToggle {
+          color: $color-white;
+        }
+        span {
+          font-size: 1.4rem;
+          font-weight: 400;
+          color: $color-black;
+          &.isToggle {
+            color: $color-white;
+          }
+        }
+      }
+    }
+    .info .double-btn {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+    .description {
+      font-size: 1.4rem;
+      font-weight: 400;
+      .showDesc {
+        position: relative;
+        max-height: 50px;
+        overflow: hidden;
+        &::before {
+          position: absolute;
+          content: '';
+          display: block;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 20px;
+          background: linear-gradient(rgba(255, 255, 255, 0), white);
+        }
+        &.isToggle {
+          &::before {
+            background: linear-gradient(rgba(255, 255, 255, 0), #484848);
+          }
+        }
+      }
+      > span {
+        color: $color-blue;
+        display: flex;
+        align-items: center;
+        &.isToggle {
+          color: $color-yellow;
+          &:hover {
+            color: $color-red;
+          }
+        }
+        &:hover {
+          text-decoration: underline;
+          color: $color-purple;
+          cursor: pointer;
+        }
+      }
+    }
+    .list-chapter {
+      .menu {
+        nav {
+          border: solid 1px #ddd;
+          padding: 5px;
+          border-radius: 5px;
+          margin: 10px 0;
+          flex-direction: column;
+        }
+      }
+      .menu .heading {
+        display: grid;
+        grid-template-columns: 5.8fr 3.7fr 1.5fr;
+        position: relative;
+        .sort-icon {
+          position: absolute;
+          height: 15px;
+          top: 2px;
+          right: 10px;
+          cursor: pointer;
+          opacity: 0.74;
+          @include mobile {
+            left: 27%;
+          }
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+      .menu .list {
+        display: flex;
+        flex-direction: column;
+        &.showChapter {
+          height: 100vh;
+          overflow-y: scroll;
+          overflow-x: hidden;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+        &.reverseChapter {
+          flex-direction: column-reverse;
+        }
+        .item {
+          display: grid;
+          grid-template-columns: 5.8fr 3.7fr 1.5fr;
+          padding: 6px 0;
+          border-bottom: 1px das #ddd;
+          font-size: 1.3rem;
+          color: #999;
+          cursor: pointer;
+          .chapter {
+            font-size: 1.4rem;
+            color: $color-black;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            width: 85%;
+            &.isToggle {
+              color: $color-white;
+              &:hover {
+                color: $color-red;
+              }
+            }
+          }
+          .chapter:hover {
+            color: #03f;
+          }
+        }
+      }
+      .show-chapter {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ddd;
+        line-height: 35px;
+        gap: 5px;
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: $color-blue;
+        cursor: pointer;
+        &.isToggle {
+          color: $color-yellow;
+          &:hover {
+            color: $color-red;
+          }
+          &::after {
+            background: linear-gradient(rgba(255, 255, 255, 0), #484848);
+          }
+        }
+        &:hover {
+          color: $color-purple;
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 35px;
+          top: -36px;
+          background: linear-gradient(rgba(255, 255, 255, 0), white);
+          width: 100%;
+        }
+      }
+    }
+  }
+}
