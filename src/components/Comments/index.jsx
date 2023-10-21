@@ -65,7 +65,7 @@ const Comments = ({ isToggle }) => {
     const getReplyComment = async () => {
       await axios
         .get('http://localhost:8081/reply/comment')
-        .then((res) => setReplyCommentUser(res.data))
+        .then((res) => setReplyCommentUser([...res.data]))
         .catch((err) => console.log(err));
     };
     getComment();
@@ -251,7 +251,7 @@ const Comments = ({ isToggle }) => {
                   onChange={(e) => setInputs(e.target.value)}
                   // Reply comment
                   onReplyComment={handleReplyComment}
-                  dataReplyComment={replyCommentUser.length ? replyCommentUser : []}
+                  dataReplyComment={replyCommentUser || []}
                   isShowReply={isShowReply}
                   // handleSubmitComment add Comment
                   onSubmitComment={(e) => handleSubmitComment(e, 'repcomments', comment.id)}

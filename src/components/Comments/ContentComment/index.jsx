@@ -88,7 +88,7 @@ const ContentComment = ({
         <div className={cx('rep-comments')}>
           {!!dataReplyComment &&
             dataReplyComment
-              .filter((reply) => reply.id === comment.id)
+              ?.filter((reply) => reply.id === comment.id)
               .map((item) => (
                 <div key={uuid()} className={cx('item-comment')}>
                   <div className={cx('avatar-user')}>

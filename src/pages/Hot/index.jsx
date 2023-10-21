@@ -22,8 +22,7 @@ export default function Hot() {
     }
     return 1;
   });
-  console.log(trendingProduct);
-  const { info, isToggle } = useContext(UserLogin);
+  const { isToggle, info, firebaseUpdateHistory } = useContext(UserLogin);
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
@@ -50,8 +49,9 @@ export default function Hot() {
   const handleNavigateDetails = (details) => {
     navigate(`/details?details=${details}`);
   };
-  const handleChapterReading = (e, comicsId, chapterId) => {
+  const handleChapterReading = async (e, comicsId, chapterId, userInfo) => {
     e.stopPropagation();
+    if (info) await firebaseUpdateHistory(info?.uid, userInfo);
     navigate(`/readStory?comicsId=${comicsId}&chapterId=${chapterId}`);
   };
   return (
@@ -77,7 +77,7 @@ export default function Hot() {
                       data={product}
                       isToggle={isToggle}
                       onNavigateDetails={() => handleNavigateDetails(product.id)}
-                      onChapterReading={(e) => handleChapterReading(e, product.id, product.last_chapter.id)}
+                      onChapterReading={(e) => handleChapterReading(e, product.id, product.last_chapter.id, product)}
                     />
                   ))}
                 </div>

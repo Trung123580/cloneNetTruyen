@@ -22,7 +22,7 @@ export default function Men() {
     }
     return 1;
   });
-  const { isToggle } = useContext(UserLogin);
+  const { isToggle, info, firebaseUpdateHistory } = useContext(UserLogin);
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
@@ -49,8 +49,9 @@ export default function Men() {
   const handleNavigateDetails = (details) => {
     navigate(`/details?details=${details}`);
   };
-  const handleChapterReading = (e, comicsId, chapterId) => {
+  const handleChapterReading = async (e, comicsId, chapterId, userInfo) => {
     e.stopPropagation();
+    if (info) await firebaseUpdateHistory(info?.uid, userInfo);
     navigate(`/readStory?comicsId=${comicsId}&chapterId=${chapterId}`);
   };
   return (
@@ -77,7 +78,7 @@ export default function Men() {
                         data={product}
                         isToggle={isToggle}
                         onNavigateDetails={() => handleNavigateDetails(product.id)}
-                        onChapterReading={(e) => handleChapterReading(e, product.id, product.last_chapter.id)}
+                        onChapterReading={(e) => handleChapterReading(e, product.id, product.last_chapter.id, product)}
                       />
                     ))}
                   </div>
@@ -86,8 +87,8 @@ export default function Men() {
                 <Ranks isToggle={isToggle} />
               </div>
             </div>
+            <Comments isToggle={isToggle} />
           </div>
-          <Comments isToggle={isToggle} />
         </>
       ) : (
         <>

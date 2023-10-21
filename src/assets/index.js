@@ -8,4 +8,5 @@ import prev from './image/prev.png';
 import next from './image/next.png';
 import error from './image/error.png';
 import noFollow from './image/huong-dan-theo-doi-truyen.jpg';
-export { logo, sun, moon, prev, next, error, sortInit, sortReverse, noFollow };
+import modal from './image/modal.png';
+export { logo, sun, moon, prev, next, error, sortInit, sortReverse, noFollow, modal };

@@ -26,7 +26,7 @@ const Home = () => {
     }
   });
   const navigate = useNavigate();
-  const { isToggle } = useContext(UserLogin);
+  const { isToggle, info, firebaseUpdateHistory } = useContext(UserLogin);
   useEffect(() => {
     const callApi = async () => {
       const response = await callApiSliderComics();
@@ -55,8 +55,9 @@ const Home = () => {
   const handleNavigateDetails = (details) => {
     navigate(`/details?details=${details}`);
   };
-  const handleChapterReading = (e, comicsId, chapterId) => {
+  const handleChapterReading = async (e, comicsId, chapterId, userInfo) => {
     e.stopPropagation();
+    if (info) await firebaseUpdateHistory(info?.uid, userInfo);
     navigate(`/readStory?comicsId=${comicsId}&chapterId=${chapterId}`);
   };
   // console.log(newProduct.comics);
@@ -86,7 +87,7 @@ const Home = () => {
                         data={product}
                         isToggle={isToggle}
                         onNavigateDetails={() => handleNavigateDetails(product.id)}
-                        onChapterReading={(e) => handleChapterReading(e, product.id, product.last_chapter.id)}
+                        onChapterReading={(e) => handleChapterReading(e, product.id, product.last_chapter.id, product)}
                       />
                     ))}
                   </div>
