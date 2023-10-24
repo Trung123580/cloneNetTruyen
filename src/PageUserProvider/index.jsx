@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { listDashboard } from '~/constant';
@@ -93,8 +93,11 @@ const PageUserProvider = ({ children }) => {
     setReRender(!reRender);
   };
   // eslint-disable-next-line
+  const isInfoChanged = useRef(false);
+
   useEffect(() => {
-    if (!info) return;
+    if (!info || !isInfoChanged.current) return;
+
     const imageListRef = ref(storage, `/images/${info?.uid}`);
     listAll(imageListRef).then((response) => {
       response.items.forEach((item) => {
@@ -103,7 +106,15 @@ const PageUserProvider = ({ children }) => {
         });
       });
     });
-  }, [reRender, info?.uid]);
+
+    // Đánh dấu rằng "info" đã thay đổi và không cần gọi lại hook
+    isInfoChanged.current = false;
+  }, [reRender]);
+
+  // Khi "info" thay đổi, đánh dấu rằng "info" đã thay đổi
+  useEffect(() => {
+    isInfoChanged.current = true;
+  }, [info]);
   // Change
   const handleChangeInputFirstName = (e) => {
     setChangeInputFirstName(e.target.value);
