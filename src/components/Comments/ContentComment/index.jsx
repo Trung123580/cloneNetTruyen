@@ -1,4 +1,4 @@
-import { memo, forwardRef } from 'react';
+import { memo } from 'react';
 import classNames from 'classnames/bind';
 import style from './ContentComment.module.scss';
 import { v4 as uuid } from 'uuid';

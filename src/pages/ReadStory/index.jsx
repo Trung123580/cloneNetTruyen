@@ -62,7 +62,7 @@ function ReadStory() {
     };
     callApi();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [chapterApi, selectChapter]);
+  }, [chapterApi, selectChapter, info?.uid, locationChapter.search]);
   useEffect(() => {
     const handleScroll = () => {
       window.scrollY >= 240 ? setIsAddFixed(true) : setIsAddFixed(false);

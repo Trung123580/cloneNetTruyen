@@ -18,13 +18,13 @@ function FormLogin({ className, onRouterComponent }) {
   const navigate = useNavigate();
   const { info, setInfo, setIsInfo, isInfo } = useContext(UserLogin);
   const { name, imgUrl } = info ? info : { name: null, imgUrl: null };
-  // eslint-disable-next-line
   useEffect(() => {
     if (isInfo) {
       navigate('/');
       setIsInfo(false);
     }
-  }, [isInfo]);
+  }, [isInfo, navigate, setIsInfo]);
+
   useEffect(() => {
     const get = async () => {
       await axios

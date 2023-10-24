@@ -78,7 +78,7 @@ function Details() {
     };
     callApi();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [locations.search]);
+  }, [locations.search, info?.uid]);
   // khi dang o page details lick zo 1 product ko chuyen huong chi reload lai de lay data moi
   const handleNavigateCategory = (idGenres, name) => {
     dispatch(callApi(idGenres));
