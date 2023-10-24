@@ -20,7 +20,7 @@ function FormLogin({ className, onRouterComponent }) {
   const { name, imgUrl } = info ? info : { name: null, imgUrl: null };
   // eslint-disable-next-line
   useEffect(() => {
-    if (isInfo === true) {
+    if (isInfo) {
       navigate('/');
       setIsInfo(false);
     }

@@ -39,10 +39,8 @@ function Ranks({ isToggle }) {
   };
   const handleChapterReading = async (e, comicsId, chapterId, userInfo) => {
     e.stopPropagation();
-    console.log(userInfo);
-    console.log(comicsId, chapterId);
-    // if (info) await firebaseUpdateHistory(info?.uid, userInfo);
-    // navigate(`/readStory?comicsId=${comicsId}&chapterId=${chapterId}`);
+    if (info) await firebaseUpdateHistory(info?.uid, userInfo);
+    navigate(`/readStory?comicsId=${comicsId}&chapterId=${chapterId}`);
   };
   return (
     <div className={cx('rank')}>

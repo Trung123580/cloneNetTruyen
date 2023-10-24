@@ -22,7 +22,7 @@ const UserSignOut = () => {
       setInfo('');
     };
     handleSignOut();
-  }, [isInfo]);
+  }, [isInfo, navigate, onRouterDefault, setIsInfo, setInfo]);
 
   return <div>UserSignOut</div>;
 };
