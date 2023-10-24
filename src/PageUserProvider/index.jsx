@@ -103,7 +103,7 @@ const PageUserProvider = ({ children }) => {
         });
       });
     });
-  }, [reRender]);
+  }, [reRender, info?.uid]);
   // Change
   const handleChangeInputFirstName = (e) => {
     setChangeInputFirstName(e.target.value);
