@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext, useRef } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { listDashboard } from '~/constant';
@@ -93,11 +93,9 @@ const PageUserProvider = ({ children }) => {
     setReRender(!reRender);
   };
   // eslint-disable-next-line
-  const isInfoChanged = useRef(false);
 
   useEffect(() => {
-    if (!info || !isInfoChanged.current) return;
-
+    if (!info) return;
     const imageListRef = ref(storage, `/images/${info?.uid}`);
     listAll(imageListRef).then((response) => {
       response.items.forEach((item) => {
@@ -106,16 +104,7 @@ const PageUserProvider = ({ children }) => {
         });
       });
     });
-
-    // Đánh dấu rằng "info" đã thay đổi và không cần gọi lại hook
-    isInfoChanged.current = false;
-  }, [reRender]);
-
-  // Khi "info" thay đổi, đánh dấu rằng "info" đã thay đổi
-  useEffect(() => {
-    isInfoChanged.current = true;
-  }, [info]);
-  // Change
+  }, [reRender, info]);
   const handleChangeInputFirstName = (e) => {
     setChangeInputFirstName(e.target.value);
   };
@@ -132,7 +121,7 @@ const PageUserProvider = ({ children }) => {
 
   const handleSubmitEditUser = async (e) => {
     e.preventDefault();
-    if (listUrl.length < 0) return;
+    if (listUrl.length <= 0) return;
     const firstName = document.querySelector('#first-name');
     const lastName = document.querySelector('#last-name');
     if (!firstName.value || !lastName.value) {
@@ -154,7 +143,9 @@ const PageUserProvider = ({ children }) => {
       })
     );
     const user = JSON.parse(localStorage.getItem('user'));
-    setInfo(user);
+    if (JSON.stringify(user) !== JSON.stringify(info)) {
+      setInfo(user);
+    }
     await axios
       .put(`http://localhost:8081/update/user${info?.uid}`, { ...data })
       .then((res) => alert('Sửa đổi thành công'))
