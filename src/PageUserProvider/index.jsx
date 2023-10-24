@@ -92,7 +92,7 @@ const PageUserProvider = ({ children }) => {
     // cap nhat hinh anh tam thoi
     setReRender(!reRender);
   };
-  //
+  // eslint-disable-next-line
   useEffect(() => {
     if (!info) return;
     const imageListRef = ref(storage, `/images/${info?.uid}`);
