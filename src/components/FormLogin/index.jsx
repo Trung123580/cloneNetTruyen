@@ -23,12 +23,12 @@ function FormLogin({ className, onRouterComponent }) {
       navigate('/');
       setIsInfo(false);
     }
-  }, [isInfo, navigate, setIsInfo]);
+  }, [isInfo]);
 
   useEffect(() => {
     const get = async () => {
       await axios
-        .get(`http://localhost:8081/user${info?.uid}`)
+        .get(`https://deploy-net-tuyen-hmgp.vercel.app/user${info?.uid}`)
         .then((response) => {
           const [userInfo] = response.data;
           setUserProfile(userInfo);

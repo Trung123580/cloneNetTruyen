@@ -46,7 +46,16 @@ function Login({ children }) {
                   dataHistory: [],
                 });
                 await axios
-                  .post(`http://localhost:8081/create/user`, { name, email, imgUrl, uid, firstName: '', lastName: '', sex: '', rank: '' })
+                  .post(`https://deploy-net-tuyen-hmgp.vercel.app/create/user`, {
+                    name,
+                    email,
+                    imgUrl,
+                    uid,
+                    firstName: '',
+                    lastName: '',
+                    sex: '',
+                    rank: '',
+                  })
                   .then((res) => console.log('post thanh cong'))
                   .catch((err) => console.log(err));
               }
@@ -67,7 +76,16 @@ function Login({ children }) {
               dataHistory: [],
             });
             await axios
-              .post(`http://localhost:8081/create/user`, { name, email, imgUrl, uid, firstName: '', lastName: '', sex: '', rank: '' })
+              .post(`https://deploy-net-tuyen-hmgp.vercel.app/create/user`, {
+                name,
+                email,
+                imgUrl,
+                uid,
+                firstName: '',
+                lastName: '',
+                sex: '',
+                rank: '',
+              })
               .then((res) => console.log('post thanh cong'))
               .catch((err) => console.log(err));
           }
@@ -100,7 +118,16 @@ function Login({ children }) {
             dataHistory: [],
           });
           await axios
-            .post(`http://localhost:8081/create/user`, { name, email, imgUrl, uid, firstName: '', lastName: '', sex: '', rank: '' })
+            .post(`https://deploy-net-tuyen-hmgp.vercel.app/create/user`, {
+              name,
+              email,
+              imgUrl,
+              uid,
+              firstName: '',
+              lastName: '',
+              sex: '',
+              rank: '',
+            })
             .then((res) => console.log('post thanh cong'))
             .catch((err) => console.log(err));
         }
@@ -119,7 +146,7 @@ function Login({ children }) {
         const authUser = userRegister.user;
         await updateProfile(authUser, { displayName: name });
         await axios
-          .post(`http://localhost:8081/create/user`, {
+          .post(`https://deploy-net-tuyen-hmgp.vercel.app/create/user`, {
             name: name,
             email: email,
             imgUrl: '',

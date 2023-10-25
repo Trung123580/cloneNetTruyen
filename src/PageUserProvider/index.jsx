@@ -35,7 +35,7 @@ const PageUserProvider = ({ children }) => {
       setListFollowStory(loggedInUser);
       if (info) {
         await axios
-          .get(`http://localhost:8081/user${info?.uid}`)
+          .get(`https://deploy-net-tuyen-hmgp.vercel.app/user${info?.uid}`)
           .then((response) => {
             const [userInfo] = response.data;
             setUserProfile(userInfo);
@@ -147,7 +147,7 @@ const PageUserProvider = ({ children }) => {
       setInfo(user);
     }
     await axios
-      .put(`http://localhost:8081/update/user${info?.uid}`, { ...data })
+      .put(`https://deploy-net-tuyen-hmgp.vercel.app/update/user${info?.uid}`, { ...data })
       .then((res) => alert('Sửa đổi thành công'))
       .catch((err) => console.log(err));
   };

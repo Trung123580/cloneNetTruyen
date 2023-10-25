@@ -42,7 +42,7 @@ const Comments = ({ isToggle }) => {
   useEffect(() => {
     const get = async () => {
       await axios
-        .get(`http://localhost:8081/user${info?.uid}`)
+        .get(`https://deploy-net-tuyen-hmgp.vercel.app/user${info?.uid}`)
         .then((response) => {
           const [userInfo] = response.data;
           setUserProfile(userInfo);
@@ -56,7 +56,7 @@ const Comments = ({ isToggle }) => {
   useEffect(() => {
     const getComment = async () => {
       await axios
-        .get(`http://localhost:8081/comments`)
+        .get(`https://deploy-net-tuyen-hmgp.vercel.app/comments`)
         .then((res) => {
           setComments([...res.data]);
         })
@@ -64,7 +64,7 @@ const Comments = ({ isToggle }) => {
     };
     const getReplyComment = async () => {
       await axios
-        .get('http://localhost:8081/reply/comment')
+        .get('https://deploy-net-tuyen-hmgp.vercel.app/reply/comment')
         .then((res) => setReplyCommentUser([...res.data]))
         .catch((err) => console.log(err));
     };
@@ -106,7 +106,7 @@ const Comments = ({ isToggle }) => {
         idUser: userProfile?.id,
       };
     axios
-      .post(`http://localhost:8081/create/${urlComment}`, { ...data })
+      .post(`https://deploy-net-tuyen-hmgp.vercel.app/create/${urlComment}`, { ...data })
       .then(() => {
         setReRender(!reRender);
         setInputs('');
@@ -121,8 +121,8 @@ const Comments = ({ isToggle }) => {
 
   // like comment
   const handleLikeComment = async (idUser, userLike, urlComment) => {
-    if (userLike === 'Like') await axios.put(`http://localhost:8081/update/${urlComment}/like${idUser}`, { userLike: 'Unlike' });
-    if (userLike === 'Unlike') await axios.put(`http://localhost:8081/update/${urlComment}/like${idUser}`, { userLike: 'Like' });
+    if (userLike === 'Like') await axios.put(`https://deploy-net-tuyen-hmgp.vercel.app/update/${urlComment}/like${idUser}`, { userLike: 'Unlike' });
+    if (userLike === 'Unlike') await axios.put(`https://deploy-net-tuyen-hmgp.vercel.app/update/${urlComment}/like${idUser}`, { userLike: 'Like' });
     setReRender(!reRender);
   };
   // deleteComment
@@ -131,7 +131,7 @@ const Comments = ({ isToggle }) => {
     if (userProfile?.id === idUser) {
       //deleteComment api
       await axios
-        .delete(`http://localhost:8081/delete/${uidComment ? 'repcomments' : 'comments'}${uidComment ? uidComment : idComment}`)
+        .delete(`https://deploy-net-tuyen-hmgp.vercel.app/delete/${uidComment ? 'repcomments' : 'comments'}${uidComment ? uidComment : idComment}`)
         .then((res) => setReRender(!reRender));
     } else {
       alert('ko phai comments cua ban');
@@ -140,9 +140,10 @@ const Comments = ({ isToggle }) => {
   };
   // collapse comment
   const handleCollapseComment = async (idComment, urlComment, booleanComment) => {
-    if (urlComment === 'comments') await axios.put(`http://localhost:8081/update/${urlComment}/collapse${idComment}`, { collapse: booleanComment });
+    if (urlComment === 'comments')
+      await axios.put(`https://deploy-net-tuyen-hmgp.vercel.app/update/${urlComment}/collapse${idComment}`, { collapse: booleanComment });
     if (urlComment === 'repcomments')
-      await axios.put(`http://localhost:8081/update/${urlComment}/collapse${idComment}`, { collapse: booleanComment });
+      await axios.put(`https://deploy-net-tuyen-hmgp.vercel.app/update/${urlComment}/collapse${idComment}`, { collapse: booleanComment });
     setIsShowMenuComment(false);
     setReRender(!reRender);
   };
@@ -159,7 +160,7 @@ const Comments = ({ isToggle }) => {
     console.log(idComment);
     console.log(urlComment);
     // urlComment sua theo url ten cua comment
-    await axios.put(`http://localhost:8081/update/comments/${urlComment}${idComment}`, { comments: inputs }).then((res) => {
+    await axios.put(`https://deploy-net-tuyen-hmgp.vercel.app/update/comments/${urlComment}${idComment}`, { comments: inputs }).then((res) => {
       setIsEditComment(false);
       setReRender(!reRender);
       setIsShowMenuComment(false);
