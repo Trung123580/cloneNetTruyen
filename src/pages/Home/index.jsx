@@ -35,6 +35,8 @@ const Home = () => {
     callApi();
     localStorage.setItem('page', JSON.stringify(1));
   }, []);
+  // console.log(product);
+  console.log(newProduct);
   useEffect(() => {
     const callApi = async () => {
       try {

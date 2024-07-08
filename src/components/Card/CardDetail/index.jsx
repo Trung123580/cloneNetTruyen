@@ -1,10 +1,9 @@
 import classNames from 'classnames/bind';
-import { v4 as uuid } from 'uuid';
 import { error } from '~/assets';
 import style from './CardDetail.module.scss';
 const cx = classNames.bind(style);
 const CardDetail = ({ data, isToggle }) => {
-  const { title, thumbnail, otherName, genres, description, auth, status, totalViews, followers, updateTime } = data;
+  const { title, thumbnail, description, auth, status, totalViews, followers, updateTime } = data;
   return (
     <div
       className={cx('detail', {
@@ -20,13 +19,7 @@ const CardDetail = ({ data, isToggle }) => {
             isToggle: isToggle ? false : true,
           })}>
           <p>
-            Tên khác : <span>{otherName[0] === '' ? title : otherName}</span>
-          </p>
-          <p>
-            Thể loại :{' '}
-            {genres.map((genre) => (
-              <span key={uuid()}>{genre.name}, </span>
-            ))}
+            Tên khác : <span>{title}</span>
           </p>
           <p>
             Tác giả : <span>{auth}</span>

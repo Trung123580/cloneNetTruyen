@@ -16,7 +16,8 @@ const Card = ({ data, isToggle, onNavigateDetails, onChapterReading, unFollow, o
     thumbnail,
     total_views: totalViews,
     updated_at: updateTime,
-    last_chapter: lastChapter,
+    last_chapters: lastChapter,
+    last_chapter: lastChapter2,
     short_description: description,
     followers,
     other_names: otherName,
@@ -36,6 +37,8 @@ const Card = ({ data, isToggle, onNavigateDetails, onChapterReading, unFollow, o
     followers,
     updateTime: updateTime ? updateTime : '1 ngày trước',
   };
+  console.log(data);
+  console.log(lastChapter);
   return (
     <div className={cx('card')} onClick={onNavigateDetails}>
       <div className={cx('thumbnail')}>
@@ -74,7 +77,9 @@ const Card = ({ data, isToggle, onNavigateDetails, onChapterReading, unFollow, o
             className={cx('chapter-item', {
               hover: isToggle ? false : true,
             })}>
-            {lastChapter?.name || data?.chapters[0]?.name}
+            {!!lastChapter?.length && lastChapter[0]?.name}
+            {!!data?.chapters?.length && data?.chapters[0]?.name}
+            {!!lastChapter2?.length && lastChapter2[0]?.name}
           </span>
           <span className={cx('time')}>{updateTime || '1 ngày trước'}</span>
         </div>

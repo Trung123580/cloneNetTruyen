@@ -23,6 +23,7 @@ function FormLogin({ className, onRouterComponent }) {
       navigate('/');
       setIsInfo(false);
     }
+    // eslint-disable-next-line
   }, [isInfo]);
 
   useEffect(() => {
@@ -36,6 +37,7 @@ function FormLogin({ className, onRouterComponent }) {
         .catch((err) => console.log(err));
     };
     get();
+    // eslint-disable-next-line
   }, [info]);
   const handleSignOut = async () => {
     await signOut(auth);

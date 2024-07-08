@@ -73,7 +73,7 @@ function Ranks({ isToggle }) {
                     </div>
                     <div className={cx('text')}>
                       <Tippy
-                        content={<span style={{}}>{userInfo.title}</span>}
+                        content={<span>{userInfo.title}</span>}
                         followCursor='horizontal'
                         plugins={[followCursor]}
                         placement='top'

@@ -38,8 +38,6 @@ const navList = [
   { name: 'lịch sử', path: '/history', component: History },
   { name: 'thể loại', categoryList: true, icon: <ArrowDropDownIcon fontSize='large' />, path: '/category', component: Category }, //tim` truyen
   { name: 'xếp hạng', ulList: true, block: true, path: '#', component: '/' }, //tim` truyen
-  { name: 'con gái', path: '/women', component: Men },
-  { name: 'con trai ', path: '/men', component: Women },
 ];
 const routerUserInfo = [
   { id: uuid(), component: InforMation },

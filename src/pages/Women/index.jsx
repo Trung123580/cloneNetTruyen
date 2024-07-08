@@ -46,6 +46,7 @@ export default function Women() {
     setTrendingPage(page);
     setTrendingProduct(null);
   };
+  console.log(trendingProduct);
   const handleNavigateDetails = (details) => {
     navigate(`/details?details=${details}`);
   };

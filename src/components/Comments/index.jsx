@@ -81,6 +81,7 @@ const Comments = ({ isToggle }) => {
     setIsShowMenuComment(!isShowMenuComment);
   };
   // submit form
+  console.log(user);
   const handleSubmitComment = (event, urlComment, idComment) => {
     event.preventDefault();
     if (!inputs) return;
